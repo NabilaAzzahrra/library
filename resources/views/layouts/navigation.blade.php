@@ -13,8 +13,56 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <div class="text-[16px] font-bold tracking-wide">Dashboard</div>
                     </x-nav-link>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div
+                                        class="text-[16px] font-bold tracking-wide {{ request()->routeIs(['faculty.index', 'majors.index', 'classes.index', 'genre.index', 'sources.index', 'loanPackages.index']) || request()->routeIs(['faculty.index', 'majors.index', 'classes.index', 'genre.index', 'sources.index', 'loanPackages.index']) ? 'text-[#F2994A]' : '' }}">
+                                        Master</div>
+                                    <div class="ms-1 mt-1">
+                                        <i
+                                            class="fi fi-rr-caret-down {{ request()->routeIs(['faculty.index', 'majors.index', 'classes.index', 'genre.index', 'sources.index', 'loanPackages.index']) || request()->routeIs(['faculty.index', 'majors.index', 'classes.index', 'genre.index', 'sources.index', 'loanPackages.index']) ? 'text-[#F2994A]' : '' }}"></i>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('faculty.index')" :class="request()->routeIs('faculty.index') ? 'text-red-500 font-bold' : ''">
+                                    {{ __('Fakultas') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('majors.index')" :class="request()->routeIs('majors.index') ? 'text-red-500 font-bold' : ''">
+                                    {{ __('Jurusan') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('classes.index')" :class="request()->routeIs('classes.index') ? 'text-red-500 font-bold' : ''">
+                                    {{ __('Kelas') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('genre.index')" :class="request()->routeIs('genre.index') ? 'text-red-500 font-bold' : ''">
+                                    {{ __('Genre') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('sources.index')" :class="request()->routeIs('sources.index') ? 'text-red-500 font-bold' : ''">
+                                    {{ __('Sumber') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('loanPackages.index')" :class="request()->routeIs('loanPackages.index')
+                                    ? 'text-red-500 font-bold'
+                                    : ''">
+                                    {{ __('Paket Peminjaman') }}
+                                </x-dropdown-link>
+
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
                 </div>
             </div>
 
